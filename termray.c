@@ -2,7 +2,6 @@
 #include "stdlib.h"
 #include "math.h"
 #include "string.h"
-#include "omp.h"
 #include "unistd.h"
 
 #define CO(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
