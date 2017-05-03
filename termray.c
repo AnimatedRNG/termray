@@ -221,33 +221,25 @@ int main(int argc, char** argv) {
             for (float x = 0; x < width; x++) {
                 int offset1 = ((int) y * width + x) * 3;
                 int offset2 = (((int) y + 1) * width + x) * 3;
-                double r1 = result_buffer[offset1];
-                double g1 = result_buffer[offset1 + 1];
-                double b1 = result_buffer[offset1 + 2];
-                double r2 = result_buffer[offset2];
-                double g2 = result_buffer[offset2 + 1];
-                double b2 = result_buffer[offset2 + 2];
+                unsigned int r1 = (unsigned int)
+                                  (result_buffer[offset1] * 256.);
+                unsigned int g1 = (unsigned int)
+                                  (result_buffer[offset1 + 1] * 256.);
+                unsigned int b1 = (unsigned int)
+                                  (result_buffer[offset1 + 2] * 256.);
+                unsigned int r2 = (unsigned int)
+                                  (result_buffer[offset2] * 256.);
+                unsigned int g2 = (unsigned int)
+                                  (result_buffer[offset2 + 1] * 256.);
+                unsigned int b2 = (unsigned int)
+                                  (result_buffer[offset2 + 2] * 256.);
 
                 char* formatter =
                     "\x1b[38;2;%d;%d;%dm\x1b[48;2;%d;%d;%dm▀\x1b[0m ";
-                size_t len = snprintf(NULL,
-                                      0,
-                                      formatter,
-                                      (unsigned int)(r1 * 256.),
-                                      (unsigned int)(g1 * 256.),
-                                      (unsigned int)(b1 * 256.),
-                                      (unsigned int)(r2 * 256.),
-                                      (unsigned int)(g2 * 256.),
-                                      (unsigned int)(b2 * 256.));
-                snprintf(&(buffer[index]),
-                         len,
-                         formatter,
-                         (unsigned int)(r1 * 256.),
-                         (unsigned int)(g1 * 256.),
-                         (unsigned int)(b1 * 256.),
-                         (unsigned int)(r2 * 256.),
-                         (unsigned int)(g2 * 256.),
-                         (unsigned int)(b2 * 256.));
+                size_t len = snprintf(NULL, 0, formatter,
+                                      r1, g1, b1, r2, g2, b2);
+                snprintf(&(buffer[index]), len, formatter,
+                         r1, g1, b1, r2, g2, b2);
 
                 index += len;
             }
