@@ -1,10 +1,9 @@
 ## termray
 
-> termray is a simple ray-tracing demo that can run in most terminal emulators
+> termray is a small (< 250 SLOC) ray-tracing demo that can run in most terminal emulators
 
-termray requires a terminal emulator with [truecolor](https://gist.github.com/XVilka/8346728) and unicode support.
-
-
+### Demo
+![termray running in 80x24 mode with a 2.5 aspect ratio by default](./example.gif) 
 
 ### Usage
 
